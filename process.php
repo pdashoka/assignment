@@ -1,20 +1,41 @@
 <?php
 include_once("function.php");
 @session_start();
+
 $formData = new Frenn_validation();
 
-$FullName 					  = htmlspecialchars(trim($_POST['FullName']));
-$PersonalIdentificationNumber = htmlspecialchars(trim($_POST['PersonalIdentificationNumber']));
-$LoanAmount					  = htmlspecialchars(trim($_POST['LoanAmount']));
-$LoanPeriod 	  			  = htmlspecialchars(trim($_POST['LoanPeriod']));
-$PerposeofLoan 				  = htmlspecialchars(trim($_POST['PerposeofLoan']));
-//echo $FullName;
+if(isset($_POST['FullName'])){
+$FullName = htmlspecialchars(trim($_POST['FullName']));	
+}
 
-$checkIdFullName = $formData->fullnameCheck($FullName);
+if(isset($_POST['PersonalIdentificationNumber'])){
+$PersonalIdentificationNumber = htmlspecialchars(trim($_POST['PersonalIdentificationNumber']));
+}
+if(isset($_POST['LoanAmount'])){
+$LoanAmount = htmlspecialchars(trim($_POST['LoanAmount']));
+}
+if(isset($_POST['LoanPeriod'])){
+$LoanPeriod = htmlspecialchars(trim($_POST['LoanPeriod']));
+}
+if(isset($_POST['PerposeofLoan'])){
+$PerposeofLoan = htmlspecialchars(trim($_POST['PerposeofLoan']));
+}
+
+if($FullName){
+$checkIdFullName = $formData->fullnameCheck($FullName);	
+}
+if($PersonalIdentificationNumber){
 $checkPIN = $formData->validatePIN($PersonalIdentificationNumber);
+}
+if($LoanAmount){
 $checkLoanAmount = $formData->checkLoanAmount($LoanAmount);
+}
+if($LoanPeriod){
 $checkLoanPeriod = $formData->checkLoanPeriod($LoanPeriod);
+}
+if($PerposeofLoan){
 $checkPerposeofLoan = $formData->checkPerposeofLoan($PerposeofLoan);
+}
 
 if($checkIdFullName == 0)
 {
@@ -41,25 +62,4 @@ if($checkIdFullName == 0)
 }
 
 
-
-
-//logErr($fullData);
-// $file_name = 'files/records.txt';
-// //opens the file.txt file or implicitly creates the file
-// $myfile = fopen($file_name, 'w') or die('Cannot open file: '.$file_name); 
-// $movie_name = $FullName;
-// // write name to the file
-// fwrite($myfile, $movie_name);
-
-// // close the file
-// fclose($myfile);
-// 
-
-function logErr($data){
-  $logPath = 'files/records.txt';
-  $mode = (!file_exists($logPath)) ? 'w':'a';
-  $logfile = fopen($logPath, $mode);
-  fwrite($logfile, "\r\n". $data);
-  fclose($logfile);
-}
 ?>

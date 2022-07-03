@@ -1,4 +1,5 @@
 <?php
+
 class Frenn_validation
 {
 	public function getIdentificationNumber($identificationNumber)

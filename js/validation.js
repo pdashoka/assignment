@@ -74,6 +74,7 @@ $(document).ready(function () {
 						$('#checkLoanPeriod').focus();
 						console.log('Not Ok');	
 					}else{
+						$('#message').show(); 
 						$('#message').html('<div class="alert alert-success">Thank you ! Your form submited sucessfully</div>');
 						$('#assignmentform').trigger("reset");
                         $('#submitbtn').html('Submit');

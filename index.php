@@ -115,7 +115,7 @@
 
 
                     <div class="col-md-12">
-                        <button type="button" id="submitbtn" class="btn btn-primary  ">Submit</button>
+                        <button type="button" id="submitbtn" class="btn btn-primary">Submit</button>
                     </div>
 
                 </div>
